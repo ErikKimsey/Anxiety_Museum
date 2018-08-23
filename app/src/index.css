@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  transition-delay: 3000;
+  transition-property: all;
+}
+
+.dark-body-1 {
+  background-color: rgba(0,0,0,0.9);
+}
+
+.dark-body-2 {
+  background-color: rgba(0,0,0,0.1);
+  transition-duration: 7s;
+}
+
+.dark-body-3 {
+  background-color: rgba(0,0,0,1.0);
+}
