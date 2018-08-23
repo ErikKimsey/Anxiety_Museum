@@ -41,16 +41,25 @@ class App extends Component {
   }
 
   initLightbody = () => {
-    this.state.body.classList.remove('dark-body-1');
     this.state.body.classList.add('dark-body-2');
-    // this.initFinalDark();
-    setTimeout(this.initFinalDark, 100);
+    this.state.body.classList.remove('dark-body-1');
+    setInterval(this.initFinalDark, 1000);
   }
 
+  randomizeLightDark = () => {
+    return Math.floor(Math.random() * Math.max(2));
+  }
 
   initFinalDark = () => {
-    this.state.body.classList.remove('dark-body-2');
-    this.state.body.classList.add('dark-body-3');
+    let god = this.randomizeLightDark();
+    // (god === 0) ? this.state.body.classList.add('dark-body-2') : this.state.body.classList.add('dark-body-3');
+    if (god === 0) {
+      this.state.body.classList.remove('dark-body-2');
+      this.state.body.classList.add('dark-body-3');
+    } else {
+      this.state.body.classList.add('dark-body-2');
+      this.state.body.classList.remove('dark-body-3');
+    }
   }
 
   setImageToState = (arr) => {
@@ -60,7 +69,7 @@ class App extends Component {
   render() {
     return (
       <AppContainer>
-        <Museum img1={this.state.i1}  imgArr={this.state.classy} />
+        <Museum img1={this.state.i1} randomize={this.randomizeLightDark } imgArr={this.state.classy} />
       </AppContainer>
     );
   }
