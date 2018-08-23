@@ -6,13 +6,13 @@ const MuseumContainer = styled.div`
     width: 986px;
     height: 433px;
     box-shadow: inset 0px 8px 17px #A0566C;
-    box-shadow: ${props => props.darken ? "inset -10px -8px 27px #880a0f" : "inset 0px 8px 17px #A0566C" };
+    box-shadow: ${props => props.darken ? "inset -10px -8px 27px #000" : "inset 10px 8px 17px #A0566C" };
     display:flex;
     flex-flow:row;
     justify-content: space-around;
     align-items:center;
-    transition-delay: 2s;
-    transition-duration:2s;
+    transition-delay: 0;
+    transition-duration:1s;
 
 `;
 
@@ -29,8 +29,8 @@ class Museum extends Component {
 
     componentDidMount() {
         this.setState({classy: this.props.imgArr});
-        setInterval(this.goDarkGoLight, 2777);
-        window.setTimeout(this.intervalDisplay, 3100);
+        // setInterval(this.goDarkGoLight, 1000);
+        window.setTimeout(this.intervalDisplay, 1100);
     }
 
     intervalDisplay = () => {
@@ -39,7 +39,8 @@ class Museum extends Component {
     }
 
     goDarkGoLight = () => {
-        this.setState({ goDark: !this.state.goDark });
+        let dark = !this.state.goDark;
+        // this.setState({ goDark: dark });
     }
 
     initSkyImgs = (i) => {
@@ -69,9 +70,8 @@ class Museum extends Component {
     }
 
     render() {
-        
         return (
-            <MuseumContainer darken={this.state.goDark}>
+            <MuseumContainer darken={this.props.trigger}>
                 <Frame initImg={require(`../assets/${this.state.canvas1}`)}/>
 
                 <Frame initImg={require(`../assets/${this.state.canvas2}`)}/>
